@@ -1,5 +1,7 @@
+// To seed the database with comment data.
 const { Comment } = require('../models');
 
+// Array of data to seed the Comment table
 const commentData = [
     {
         comment_text: "This is a comment",
@@ -53,6 +55,8 @@ const commentData = [
     }
 ];
 
+// Function to seed the Comment table with the commentData array
 const seedComments = () => Comment.bulkCreate(commentData);
 
+// Export the seedComments function
 module.exports = seedComments;

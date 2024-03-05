@@ -1,5 +1,7 @@
+// seed the database with post data.
 const { Post } = require('../models');
 
+// Array of data to seed the Post table
 const postData = [
     {
         title: "Test Post 1",
@@ -53,6 +55,8 @@ const postData = [
     }
 ];
 
+// Function to seed the Post table with the postData array
 const seedPosts = () => Post.bulkCreate(postData);
 
+// Export the seedPosts function
 module.exports = seedPosts;
