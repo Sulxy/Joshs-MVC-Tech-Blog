@@ -1,6 +1,7 @@
 // Importing the User model from the models folder
 const { User } = require('../models');
 
+// Array of data to seed the User table
 const userData = [
     {
         username: "user1",
