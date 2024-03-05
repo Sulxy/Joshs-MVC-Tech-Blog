@@ -1,7 +1,9 @@
+// Handle the routes for the homepage, login, signup, dashboard, newpost, and editpost pages
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+// GET all posts for the homepage
 router.get('/', async (req, res) => {
   try {
     const postData = await Post.findAll({
@@ -24,6 +26,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// GET a single post
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -54,6 +57,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
     }
     });
 
+// GET all posts for the dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -79,6 +83,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+// GET the login page
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/dashboard');
@@ -87,6 +92,7 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+// GET the signup page
 router.get('/signup', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/dashboard');
@@ -95,6 +101,7 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+// GET the newpost page
 router.get('/newpost', (req, res) => {
     if (!req.session.loggedIn) {
         res.redirect('/login');
@@ -103,6 +110,7 @@ router.get('/newpost', (req, res) => {
     res.render('newpost');
 });
 
+// GET the editpost page for a specific post
 router.get('/editpost/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -133,4 +141,5 @@ router.get('/editpost/:id', async (req, res) => {
     }
 });
 
+// Export the router
 module.exports = router;
