@@ -1,6 +1,8 @@
+// Handle user requests and responses
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// GET all users
 router.get('/', async (req, res) => {
     User.findAll({
         attributes: { exclude: ['password'] }
@@ -12,6 +14,7 @@ router.get('/', async (req, res) => {
         });
 });
 
+// POST a new user
 router.post('/signup', async (req, res) => {
     try {
         const newUser = new User();
@@ -34,6 +37,7 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// POST a user login
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
@@ -63,6 +67,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// POST a user logout
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
@@ -73,4 +78,5 @@ router.post('/logout', (req, res) => {
     }
 });
 
+// export the router
 module.exports = router;
