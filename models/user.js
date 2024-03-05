@@ -1,14 +1,17 @@
+// Create the User model for the database
 console.log("Sequelize version:", require('sequelize').version);
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 const bcryptjs = require('bcryptjs');
 
+// Create the User model
 class User extends Model {
     checkPassword(loginPw) {
         return bcryptjs.compareSync(loginPw, this.password);
     }
 }
 
+// Define the User model
 User.init(
     {
       id: {
@@ -57,4 +60,5 @@ User.init(
     }
   );
   
+  // Export the User model
   module.exports = User;
