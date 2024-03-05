@@ -1,0 +1,14 @@
+<main class="container mt-5">
+    <h1 class="mb-4">Edit Post</h1>
+    <form id="editpost-form" class="dashboard-sign-up-form">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{title}}">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content:</label>
+            <textarea class="form-control" id="content" name="content">{{content}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit Post</button>
+        <button type="button" class="btn btn-danger" id="delete-post">Delete Post</button>
+</main>
