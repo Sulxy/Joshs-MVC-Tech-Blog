@@ -1,14 +1,12 @@
-// Connect to the database using Sequelize. It is used in the models folder 
-// to create the tables and in the server.js file to start the server.
-const Sequelize = require("../models/user");
+const Sequelize = require("sequelize");
 
 // To pull the environment variables from the .env file
 require("dotenv").config();
 
 // Create a new Sequelize object and connect to the database
-const sequelize = process.env.JAWSDB_URL
+const sequelize = process.env.JAWSDB_URL // <-- JAWSDB_URL is an environment variable that Heroku provides
     ? new Sequelize(process.env.JAWSDB_URL)
-    : new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, {
+    : new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASSWORD, { // localhost
             host: "localhost",
             dialect: "mysql",
             dialectOptions: {

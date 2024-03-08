@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       posts,
-      loggedIn: req.session.loggedIn,
+      logged_In: req.session.logged_In,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -48,14 +48,14 @@ router.get('/post/:id', withAuth, async (req, res) => {
     
         const post = postData.get({ plain: true });
     
-        res.render('single-post', {
-        post,
-        loggedIn: req.session.loggedIn,
+        res.render('post', {
+        ...post,
+        logged_In: req.session.logged_In,
         });
     } catch (err) {
         res.status(500).json(err);
     }
-    });
+});
 
 // GET all posts for the dashboard
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -76,7 +76,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
         res.render('dashboard', {
         posts,
-        loggedIn: req.session.loggedIn,
+        logged_In: req.session.logged_In,
         });
     } catch (err) {
         res.status(500).json(err);
@@ -85,7 +85,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
 // GET the login page
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_In) {
         res.redirect('/dashboard');
         return;
     }
@@ -94,7 +94,7 @@ router.get('/login', (req, res) => {
 
 // GET the signup page
 router.get('/signup', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_In) {
         res.redirect('/dashboard');
         return;
     }
@@ -103,7 +103,7 @@ router.get('/signup', (req, res) => {
 
 // GET the newpost page
 router.get('/newpost', (req, res) => {
-    if (!req.session.loggedIn) {
+    if (!req.session.logged_In) {
         res.redirect('/login');
         return;
     }
@@ -121,7 +121,6 @@ router.get('/editpost/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username'],
@@ -133,8 +132,8 @@ router.get('/editpost/:id', async (req, res) => {
         const post = postData.get({ plain: true });
 
         res.render('editpost', {
-            post,
-            loggedIn: req.session.loggedIn,
+            ...post,
+            logged_In: req.session.logged_In,
         });
     } catch (err) {
         res.status(500).json(err);
