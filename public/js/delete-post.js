@@ -6,18 +6,18 @@ const deletePost = async (post_id) => {
     });
 
     if (response.ok) {
-        document.location.reload('/dashboard');
+        document.location.reload();
     } else {
         alert('Failed to delete post');
     }
 };
 
 // Event listener for delete button
-const deleteBtn = (event) => {
-    if (event.target.matches('.delete-btn')) {
-        const post_id = event.target.getAttribute('data-post-id');
-        deletePost(post_id);
+const deletePostHandler = (event) => {
+    if (event.target.matches(".delete-post")) {
+      const post_id = event.target.getAttribute("data-post-id");
+      deletePost(post_id);
     }
-};
-
-document.addEventListener('click', deleteBtn);
+  };
+  
+  document.addEventListener("click", deletePostHandler);

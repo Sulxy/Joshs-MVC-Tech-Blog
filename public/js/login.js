@@ -1,4 +1,4 @@
-const loginFormHandler = async (event) => {
+const loginForm = async (event) => {
     event.preventDefault();
 
     // Collect values from the login form
@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page
-            document.location.replace('/dashboard');
+            document.location.replace('/');
         } else {
             alert('Failed to log in');
         }
@@ -26,5 +26,5 @@ const loginFormHandler = async (event) => {
 const loginBtn = document.querySelector('#login-btn');
 
 if (loginBtn) {
-    loginBtn.addEventListener('click', loginFormHandler);
+    loginBtn.addEventListener('submit', loginForm);
 }

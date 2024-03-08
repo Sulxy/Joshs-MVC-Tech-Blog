@@ -1,8 +1,8 @@
 const newPost = async (event) => {
     event.preventDefault();
 
-    const title = document.querySelector('#post-title').value.trim();
-    const content = document.querySelector('#post-content').value.trim();
+    const title = document.querySelector('#new-post-title').value.trim();
+    const content = document.querySelector('#new-post-content').value.trim();
 
     if (title && content) {
         const response = await fetch(`/api/posts`, {
@@ -20,7 +20,7 @@ const newPost = async (event) => {
 };  
 
 // Event listener for new post button
-const newPostBtn = document.querySelector('#new-post-btn');
+const newPostBtn = document.querySelector('.new-post-btn');
 if (newPostBtn) {
     newPostBtn.addEventListener('click', newPost);
 }

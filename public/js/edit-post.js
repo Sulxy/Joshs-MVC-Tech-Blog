@@ -1,7 +1,3 @@
-// Variables
-const updateBtn = document.querySelector('#update-btn');
-const deleteBtn = document.querySelector('#delete-btn');
-
 // Get post ID from endpoint
 const post_id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
@@ -35,8 +31,7 @@ const deletePost = async (event) => {
 
     const response = await fetch(`/api/posts/${post_id}`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-    });
+        });
 
     if (response.ok) {
         document.location.replace('/dashboard');
@@ -48,10 +43,12 @@ const deletePost = async (event) => {
 // Event Listeners
 
 // Update post
+const updateBtn = document.querySelector('#update-post');
 if (updateBtn) {
     updateBtn.addEventListener('click', updatePost);
 }
 
+const deleteBtn = document.querySelector('#delete-post');
 // Delete post
 if (deleteBtn) {
     deleteBtn.addEventListener('click', deletePost);
