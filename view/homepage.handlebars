@@ -1,5 +1,5 @@
 <main class="container mt-5">
-    <h1>Home</h1>
+    <h1 class="mb-4 text-white">Tech Blog Posts</h1>
         <div class="row">
             {{#each posts}}
                 <div class="col-md-4">
@@ -9,10 +9,8 @@
                                 <a href="/post/{{id}}" class="text-dark">{{title}}</a>
                             </h2>
                         </div>
-                            <div class="card-body">
-                                <p class="card-text">{{content}}</p>
-                                <p class="card-text">Created by: {{user.username}}</p>
-                            </div>
+                        <div class="card-body text-dark">
+                            <p class="card-text">Created by: {{user.username}} at {{format_date createdAt}}</p>
                         </div>
                     </div>
                 </div>
