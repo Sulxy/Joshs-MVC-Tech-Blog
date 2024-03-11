@@ -26,7 +26,7 @@ const updatePost = async (event) => {
 };
 
 // Delete post
-const deletePost = async (event) => {
+const deletePostFromEdit = async (event) => {
     event.preventDefault();
 
     const response = await fetch(`/api/posts/${post_id}`, {
@@ -51,5 +51,5 @@ if (updateBtn) {
 const deleteBtn = document.querySelector('#delete-post');
 // Delete post
 if (deleteBtn) {
-    deleteBtn.addEventListener('click', deletePost);
+    deleteBtn.addEventListener('click', deletePostFromEdit);
 }
