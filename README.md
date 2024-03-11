@@ -1,7 +1,7 @@
 # Joshs-MVC-Tech-Blog
 
 ## Description
-This is a  website that allows users to sign-u/login, create posts, comments, and provides a general discourse for anything tech related. 
+This is a  website that allows users to sign-up/login, create posts, comments, and provides a general discourse for anything tech related. 
 
 ## Table of Contents
 - [Installation](#installation)
