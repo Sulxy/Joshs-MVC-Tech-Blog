@@ -58,7 +58,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
 });
 
 // GET all posts for the dashboard
-router.get('/dashboard', withAuth, async (req, res) => {
+router.get('/dashboard', async (req, res) => {
     try {
         const postData = await Post.findAll({
         where: {
