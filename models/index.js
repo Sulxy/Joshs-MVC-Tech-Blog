@@ -1,7 +1,7 @@
  // Import Models
 const User = require('./User');
 const Post = require('./Post');
-const Comment = require('./comment');
+const Comment = require('./Comment');
 
 // Create Associations
 // User.hasMany(Post, {
