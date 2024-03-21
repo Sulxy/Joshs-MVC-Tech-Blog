@@ -30,20 +30,10 @@ router.get('/', async (req, res) => {
 router.get('/post/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
-        include: [
-            {
-            model: User,
-            attributes: ['username'],
-            },
-            {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-            include: {
-                model: User,
-                attributes: ['username'],
-            },
-            },
-        ],
+            include: [
+                { model: User, attributes: ["username"] },
+                { model: Comment, include: [{ model: User, attributes: ["username"] }], },
+            ],
         });
     
         const post = postData.get({ plain: true });
@@ -57,8 +47,8 @@ router.get('/post/:id', withAuth, async (req, res) => {
     }
 });
 
-// GET all posts for the dashboard
-router.get('/dashboard', async (req, res) => {
+// GET all current posts for the dashboard
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
         where: {
@@ -104,10 +94,10 @@ router.get('/signup', (req, res) => {
 // GET the newpost page
 router.get('/newpost', (req, res) => {
     if (!req.session.logged_In) {
-        res.redirect('/login');
+        res.render('newpost');
         return;
     }
-    res.render('newpost');
+    res.redirect('/login');
 });
 
 // GET the editpost page for a specific post

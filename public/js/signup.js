@@ -6,7 +6,7 @@ const signUp = async (event) => {
     const email = document.querySelector('#email').value.trim();
 
     if (username && password && email) {
-        const response = await fetch('/api/users/signup', {
+        const response = await fetch('/api/user/signup', {
             method: 'POST',
             body: JSON.stringify({ username, password, email }),
             headers: { 'Content-Type': 'application/json' },
@@ -23,5 +23,5 @@ const signUp = async (event) => {
 // Event listener for sign up button
 const signUpForm = document.querySelector('#signup-form');
 if (signUpForm) {
-    signUpForm.addEventListener('click', signUp);
+    signUpForm.addEventListener('submit', signUp);
 }

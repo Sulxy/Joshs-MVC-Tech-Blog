@@ -5,7 +5,7 @@ const newComment = async (event) => {
     const post_id = parseInt(window.location.pathname.split('/').pop());
 
     if (content) {
-        const response = await fetch(`/api/comments`, {
+        const response = await fetch(`/api/comment`, {
             method: 'POST',
             body: JSON.stringify({ comment_text: content, post_id }),
             headers: { 'Content-Type': 'application/json' },
@@ -14,8 +14,6 @@ const newComment = async (event) => {
         if (response.ok) {
             document.location.reload();
         } else {
-            console.log('Status:', response.status);
-            console.log('Status Text:', response.text);
             alert('Failed to create comment');
         }
     }
@@ -24,5 +22,5 @@ const newComment = async (event) => {
 // Event listener for new comment button
 const newCommentBtn = document.querySelector('.new-comment-btn');
 if (newCommentBtn) {
-    newCommentBtn.addEventListener('click', newComment);
+    newCommentBtn.addEventListener('submit', newComment);
 }

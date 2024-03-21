@@ -1,7 +1,7 @@
 // Import routes
 const router = require('express').Router();
-const apiRoutes = require('./api/index.js');
-const homeRoutes = require('./home-routes.js');
+const apiRoutes = require('./api');
+const homeRoutes = require('./home-routes');
 
 // Set up middleware
 router.use('/api', apiRoutes);

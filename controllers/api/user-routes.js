@@ -3,15 +3,15 @@ const router = require('express').Router();
 const { User } = require('../../models');
 
 // GET all users
-router.get('/', async (req, res) => {
+router.get("/", (req, res) => {
     User.findAll({
-        attributes: { exclude: ['password'] }
+        attributes: { exclude: ["password"] },
     })
-        .then((dbUserData) => res.json(dbUserData))
-        .catch(err => {
-            console.log(err);
-            res.status(500).json(err);
-        });
+    .then ((dbUserData) => res.json(dbUserData))
+    .catch ((err) => {
+        console.log(err);
+        res.status(500).json(err);
+    });
 });
 
 // POST a new user
@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
             res.status(200).json(userData);
         });
     } catch (err) {
-        res.status(400).json
+        res.status(400).json(err);
         console.log(err);
     }
 });
