@@ -11,7 +11,7 @@ const updatePost = async (event) => {
     const content = document.querySelector('#post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/post/${post_id}`, {
+        const response = await fetch(`/api/posts/${post_id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
@@ -29,7 +29,7 @@ const updatePost = async (event) => {
 const deletePostFromEdit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch(`/api/post/${post_id}`, {
+    const response = await fetch(`/api/posts/${post_id}`, {
         method: 'DELETE',
         });
 

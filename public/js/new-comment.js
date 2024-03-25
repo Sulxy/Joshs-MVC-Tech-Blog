@@ -5,7 +5,7 @@ const newComment = async (event) => {
     const post_id = parseInt(window.location.pathname.split('/').pop());
 
     if (content) {
-        const response = await fetch(`/api/comment`, {
+        const response = await fetch(`/api/comments`, {
             method: 'POST',
             body: JSON.stringify({ comment_text: content, post_id }),
             headers: { 'Content-Type': 'application/json' },
