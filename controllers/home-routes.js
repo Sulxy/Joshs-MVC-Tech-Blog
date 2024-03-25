@@ -93,11 +93,12 @@ router.get('/signup', (req, res) => {
 
 // GET the newpost page
 router.get('/newpost', (req, res) => {
+    console.log("User Logged In---------",req.session)
     if (!req.session.logged_In) {
-        res.render('newpost');
+        res.redirect('/login');
         return;
     }
-    res.redirect('/login');
+    res.render('newpost');
 });
 
 // GET the editpost page for a specific post
