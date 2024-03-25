@@ -1,7 +1,7 @@
  // Import Models
-const User = require('./user');
-const Post = require('./post');
-const Comment = require('./comment-rename');
+const User = require('./User');
+const Post = require('./Post');
+const Comment = require('./Comment');
 
 // Create Associations
 
