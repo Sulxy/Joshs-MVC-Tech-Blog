@@ -93,7 +93,6 @@ router.get('/signup', (req, res) => {
 
 // GET the newpost page
 router.get('/newpost', (req, res) => {
-    console.log("User Logged In---------",req.session)
     if (!req.session.logged_In) {
         res.redirect('/login');
         return;
