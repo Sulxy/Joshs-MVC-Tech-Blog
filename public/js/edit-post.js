@@ -48,7 +48,7 @@ if (updateBtn) {
     updateBtn.addEventListener('click', updatePost);
 }
 
-const deleteBtn = document.querySelector('#delete-post');
+const deleteBtn = document.querySelector('#edit-delete-post');
 // Delete post
 if (deleteBtn) {
     deleteBtn.addEventListener('submit', deletePostFromEdit);
