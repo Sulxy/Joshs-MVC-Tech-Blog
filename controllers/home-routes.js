@@ -92,13 +92,13 @@ router.get('/signup', (req, res) => {
 });
 
 // GET the newpost page
-router.get('/newpost', (req, res) => {
-    if (!req.session.logged_in) {
-        res.redirect('/login');
-        return;
+router.get("/newpost", (req, res) => {
+    if (req.session.logged_in) {
+      res.render("newpost");
+      return;
     }
-    res.render('newpost');
-});
+    res.redirect("/login");
+  });
 
 // GET the editpost page for a specific post
 router.get('/editpost/:id', async (req, res) => {
